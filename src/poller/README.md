@@ -73,7 +73,7 @@ The Autoscaler JSON (for Cloud functions) or YAML (for GKE) configuration can be
 validated by running the command:
 
 ```shell
-npm ci
+npm install
 npm run validateConfigFile -- path/to/config_file
 ```
 
@@ -283,6 +283,7 @@ ALTER TABLE spannerAutoscaler ADD COLUMN IF NOT EXISTS scalingPreviousSize INT64
         "metrics": [
           {
             "name": "high_priority_cpu",
+            "multi_regional_threshold": 30,
             "regional_threshold": 40,
             "regional_margin": 3
           }
@@ -333,6 +334,7 @@ data:
       metrics:
       - name: high_priority_cpu
         regional_threshold: 40
+        multi_regional_threshold: 40
         regional_margin: 3
     - projectId: spanner-autoscaler-test
       instanceId: spanner-scaling-custom
